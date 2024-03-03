@@ -1,16 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_app_academia/models/exercicio_modelo.dart';
+import 'package:projeto_app_academia/models/sentimento_model.dart';
 
 class ExercicioTela extends StatelessWidget {
-  const ExercicioTela({super.key});
+  ExercicioTela({super.key});
+
+  //criando instancias dos models
+  final ExercicioModel exercicio = ExercicioModel(
+    id: "1",
+    nome: "Remada Baixa Supinada",
+    treino: "Treino A",
+    comoFazer: "Segura a barra e puxa",
+    urlImagem: "https://www.google.com.br"
+  );
+
+  final List<SentimentoModel> listaSentimentos = [
+    SentimentoModel(
+      id: "1",
+      sentindo: "Dor no ombro direito",
+      data: "2022-10-10"
+    ),
+    SentimentoModel(
+      id: "2",
+      sentindo: "Dor no ombro esquerdo",
+      data: "2022-10-10"
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Puxada Alta Pronada - Treino A")),
+      appBar: AppBar(title: Text("${exercicio.nome} - ${exercicio.treino}")),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  {
-          print("Botão pressionado");
-        }, 
+        onPressed: ()  {}, 
         child: const Icon(Icons.add),
       ),
       body: Padding(
@@ -28,8 +50,7 @@ class ExercicioTela extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text(
-              "1. Segure a barra com as palmas das mãos voltadas para você e com as mãos afastadas na largura dos ombros."),
+            Text("${exercicio.comoFazer}"),
             const Divider(),
             const Text("Como estou me sentindo?", 
               style: TextStyle(
@@ -37,7 +58,7 @@ class ExercicioTela extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text("Sentindo dor no ombro direito.")
+            Text("Sentindo dor no ombro direito.")
           ],
         ),
       ),
