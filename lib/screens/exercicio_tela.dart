@@ -37,8 +37,7 @@ class ExercicioTela extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             ElevatedButton(
               onPressed: () {}, 
@@ -58,7 +57,16 @@ class ExercicioTela extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            Text("Sentindo dor no ombro direito.")
+
+            //Listando os sentimentos
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(listaSentimentos.length, (index) {
+              SentimentoModel sentimento = listaSentimentos[index];
+              return Text(sentimento.sentindo);
+            }),
+          ),
+
           ],
         ),
       ),
