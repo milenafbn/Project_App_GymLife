@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "903256679072",
+    "project_id": "flutter-app-academia",
+    "storage_bucket": "flutter-app-academia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903256679072:android:d92ea5c2f2499da8a65fc5",
+        "android_client_info": {
+          "package_name": "com.example.projeto_app_academia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOOwqZIakXQZ0kl97KXH5eOfDAI8eMQ68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
