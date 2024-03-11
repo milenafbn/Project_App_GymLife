@@ -49,7 +49,7 @@ class ExercicioTela extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            Text("${exercicio.comoFazer}"),
+            Text(exercicio.comoFazer),
             const Divider(),
             const Text("Como estou me sentindo?", 
               style: TextStyle(
@@ -66,7 +66,6 @@ class ExercicioTela extends StatelessWidget {
               return Text(sentimento.sentindo);
             }),
           ),
-
           ],
         ),
       ),
