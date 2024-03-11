@@ -1,6 +1,8 @@
-# projeto_app_academia
+# projeto_app_learning
 
 A new Flutter project.
+
+Este projeto se trata de uma aplicação teste para praticar a linguagem flutter 
 
 ## Getting Started
 
