@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'autenticacao_tela.dart';
+import 'package:projeto_app_academia/screens/exercicio_tela.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive); //some com a barra de status
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const AutenticacaoTela(),)
+        MaterialPageRoute(builder: (_) => ExercicioTela(),)
       );
     });
 
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
           Container(
             decoration: const BoxDecoration(
               gradient: RadialGradient(
-                colors: [Color.fromRGBO(148, 121, 194, 1), Color.fromRGBO(126, 87, 194, 1)],
+                colors: [Color.fromRGBO(121, 134, 194, 1), Color.fromRGBO(89, 87, 194, 1)],
                 center: Alignment.center,
                 radius: 1.0,
               ),

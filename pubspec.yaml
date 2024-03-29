@@ -37,16 +37,20 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.26.0
   firebase_auth: ^4.17.7
-
+  flutter_launcher_icons: ^0.9.2
   flutter_native_splash: ^2.2.4
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
 
 flutter_native_splash:
   android: true
   ios: true
-  web: false
+  image: "assets/icon.png"
 
-  color: "#FFFFFF"
-  image: assets/splash.png
+
 
 dev_dependencies:
   flutter_test:
