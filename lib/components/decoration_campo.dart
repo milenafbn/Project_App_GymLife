@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gymlife/core/colors.dart';
 
-InputDecoration getInputDecoration(String labelText) {
+InputDecoration getInputDecoration(String labelText, {Icon? icon}) {
   return InputDecoration(
+    icon: icon,
     hintText: labelText,
     fillColor: Colors.white,
     filled: true ,
