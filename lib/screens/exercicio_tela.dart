@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_app_academia/models/exercicio_modelo.dart';
-import 'package:projeto_app_academia/models/sentimento_model.dart';
+import 'package:gymlife/models/exercicio_modelo.dart';
+import 'package:gymlife/models/sentimento_model.dart';
+import 'package:gymlife/core/colors.dart';
+import 'package:gymlife/screens/home.dart';
 
 class ExercicioTela extends StatelessWidget {
-  ExercicioTela({super.key});
-
-  //criando instancias dos models
-  final ExercicioModel exercicio = ExercicioModel(
-    id: "1",
-    nome: "Remada Baixa Supinada",
-    treino: "Treino A",
-    comoFazer: "Segura a barra e puxa",
-    urlImagem: "https://www.google.com.br"
-  );
+  final ExercicioModel exercicioModel;
+  ExercicioTela({super.key, required this.exercicioModel});
 
   final List<SentimentoModel> listaSentimentos = [
     SentimentoModel(
@@ -30,11 +24,29 @@ class ExercicioTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("${exercicio.nome} - ${exercicio.treino}")),
+      appBar: AppBar(title: 
+        Column(
+          children: [
+            Text(
+              exercicioModel.nome,
+              style: const TextStyle( fontSize: 20, fontWeight: FontWeight.bold)
+            ),
+            Text(
+                exercicioModel.treino,
+              style: const TextStyle( fontSize: 15,)
+            ),
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: Cores.primarylight,
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  {}, 
+        onPressed: () {
+          print("FAB clicado");
+        },
         child: const Icon(Icons.add),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -49,7 +61,7 @@ class ExercicioTela extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            Text(exercicio.comoFazer),
+            Text(exercicioModel.comoFazer),
             const Divider(),
             const Text("Como estou me sentindo?", 
               style: TextStyle(
