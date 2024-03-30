@@ -1,7 +1,9 @@
+import 'package:gymlife/models/exercicio_modelo.dart';
+import 'package:gymlife/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'autenticacao_tela.dart';
-import 'package:projeto_app_academia/screens/exercicio_tela.dart';
+import 'package:gymlife/screens/exercicio_tela.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,11 +20,11 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive); //some com a barra de status
 
-    Future.delayed(const Duration(seconds: 1), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => ExercicioTela(),)
-      );
-    });
+    // Future.delayed(const Duration(seconds: 1), () {
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(builder: (_) => HomePage())
+    //   );
+    // });
 
   }
 
