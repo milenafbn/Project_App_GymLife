@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_app_academia/components/decoration_campo.dart';
-import 'package:projeto_app_academia/core/colors.dart';
-import 'package:projeto_app_academia/services/auth_service.dart';
+import 'package:gymlife/components/decoration_campo.dart';
+import 'package:gymlife/core/colors.dart';
+import 'package:gymlife/core/snackbar.dart';
+import 'package:gymlife/services/auth_service.dart';
 
 class AutenticacaoTela extends StatefulWidget {
   const AutenticacaoTela({super.key});
@@ -44,12 +45,14 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Image.asset("assets/light_purple_bow.png", height: 128),
-                      const Text("Hans+", 
+                      Image.asset("assets/gym-white.png", height: 128),
+                      const SizedBox(height: 16),
+                      const Text("GymLife", 
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 36, 
                         color: Colors.white,
+                        
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -124,6 +127,7 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                         ),
                         onPressed: enterButton, 
                         child: Text(style: const TextStyle(color: Colors.white),(entrar)? "Entrar" : "Cadastrar"),
+                        
                       ),
                       const Divider(),
                       TextButton(
@@ -153,15 +157,31 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
     if(_formKey.currentState!.validate()){ //o validate testa todos os campos que tem 'validate'
       if(entrar){
         print("Entrada validada");
+        _autenServico.entrarUsuario(email: email, senha: senha).then((String? erro) {
+          if(erro != null){
+            showSnackBar(context: context, text: erro);
+          } 
+        });
       } else {
         print("Cadastro validado");
         print("Nome: ${nomeController.text}, E-mail: ${emailController.text}, Senha: ${senhaController.text};");
       
-        _autenServico.cadastrarUsuario(
-          nome: nome,
-          email: email,
-          senha: senha
-        );}
+        _autenServico.cadastrarUsuario(nome: nome, email: email, senha: senha)
+          .then((String? erro) { //depois de cadastrar o usuário ENTÃO (then) ele faz o que está dentro do then
+            if(erro != null){
+              //erro
+              showSnackBar(context: context, text: erro);
+            } else {
+              //sucesso
+              showSnackBar(context: context, text: "Usuário cadastrado com sucesso", isErro: false);
+              // _formKey.currentState!.reset(); // Limpar o formulário
+              // nomeController.clear();
+              // emailController.clear();
+              // senhaController.clear();
+            }
+          }
+        );
+      } 
     } else {
       print("form invalido");
     }

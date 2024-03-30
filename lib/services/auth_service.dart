@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AutenticacaoServico {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  cadastrarUsuario({
+  Future<String?> cadastrarUsuario({
     required String nome, 
     required String email, 
     required String senha
@@ -15,13 +15,37 @@ class AutenticacaoServico {
   );
   
   await userCredential.user!.updateDisplayName(nome);
+  return null;
 } on FirebaseAuthException catch (e) {
   if (e.code == "email-already-in-use") {
-    print("O e-mail já está em uso");
+    return "O e-mail já está em uso";
+    
   } else if (e.code == "weak-password") {
     print("A senha é muito fraca");
+  }
+  return "Erro desconhecido";
+}
+  }
 
-  }
+  Future<String?> entrarUsuario({
+    required String email, 
+    required String senha
+  }) async {
+    try {
+  await _firebaseAuth.signInWithEmailAndPassword(
+    email: email, password: senha);
+  return null;
+} on FirebaseAuthException catch (e) { // 'e' captura o erro
+  return e.message; 
+  // TODO
 }
   }
+
+  Future<void> deslogar() async {
+    await _firebaseAuth.signOut();
+  }
+
 }
+
+
+
