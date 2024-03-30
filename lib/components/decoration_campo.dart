@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_app_academia/core/colors.dart';
+import 'package:gymlife/core/colors.dart';
 
 InputDecoration getInputDecoration(String labelText) {
   return InputDecoration(
